@@ -2,27 +2,27 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { submit } from "../features/technology";
 import { TextField, Button, Paper, Grid, Typography } from "@mui/material";
-import { AttachFile, Save, Delete } from "@mui/icons-material";
-import { db, storage } from "../firebase";
+import { AttachFile } from "@mui/icons-material";
+import { storage } from "../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
 import { v4 } from "uuid";
 
 const Form = () => {
   const dispatch = useDispatch();
 
-  const formCollectionRef = collection(db, "technology");
-
+  // states
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [source, setSource] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
 
+  // image select
   const handleImagechange = (event) => {
     setImage(event.target.files[0]);
   };
 
+  // adding sources to locastorage
   const addSource = () => {
     var sources = JSON.parse(localStorage.getItem("sources") || "[]");
     if (sources.length < 5) {
@@ -35,8 +35,10 @@ const Form = () => {
     }
   };
 
+  // getting value of sources from localstorage
   const allSources = JSON.parse(localStorage.getItem("sources") || "[]");
 
+  // redux updated states
   const techValues = () => {
     dispatch(
       submit({
@@ -47,9 +49,9 @@ const Form = () => {
       })
     );
   };
-
   techValues();
 
+  // image upload on firebase and url generation
   const handleImage = () => {
     if (image == null) return;
     const imageRef = ref(storage, `images/${image.name + v4()}`);
@@ -68,10 +70,9 @@ const Form = () => {
         console.log(error.message);
       });
   };
-
   handleImage();
 
-
+  // Form UI
   return (
     <Paper className="form" elevation={5}>
       <Grid container spacing={2}>
@@ -99,23 +100,23 @@ const Form = () => {
             onChange={(event) => setDescription(event.target.value)}
           />
         </Grid>
-        <Grid container item md={6} sm={6} xs={12} >
+        <Grid container item md={6} sm={6} xs={12}>
           <Button
             fullWidth
             variant="contained"
             startIcon={<AttachFile />}
             component="label"
           >
-            
-            <input
-              accept="image/*"
-              type="file"
-              onChange={handleImagechange}
-            />
+            <input accept="image/*" type="file" onChange={handleImagechange} />
           </Button>
         </Grid>
 
-        <Grid container item spacing={{md: 2, xs:1}} justifyContent="space-between">
+        <Grid
+          container
+          item
+          spacing={{ md: 2, xs: 1 }}
+          justifyContent="space-between"
+        >
           <Grid item md={10} sm={10} xs={9}>
             <TextField
               fullWidth

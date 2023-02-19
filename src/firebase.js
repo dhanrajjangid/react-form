@@ -2,13 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
+// firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyAqZiqeOx7KcXu0wGw7Jx9K2fFuXJoRM0k",
-  authDomain: "form-app-c4459.firebaseapp.com",
-  projectId: "form-app-c4459",
-  storageBucket: "form-app-c4459.appspot.com",
-  messagingSenderId: "1008425855183",
-  appId: "1:1008425855183:web:f1ad527a6dbbd754406fba"
+  apiKey: "AIzaSyBtG-TaG0Wgm8IM_w5XFtbyPPw8VO7BPBw",
+  authDomain: "my-form-97691.firebaseapp.com",
+  projectId: "my-form-97691",
+  storageBucket: "my-form-97691.appspot.com",
+  messagingSenderId: "853530731973",
+  appId: "1:853530731973:web:860b6a31e7c49cda8497ac"
 };
 
 

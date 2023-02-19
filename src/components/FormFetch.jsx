@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Paper, Grid, Typography } from "@mui/material";
-import { AttachFile, Save, Delete, Add } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { db } from "../firebase";
 import {
   doc,
   collection,
-  addDoc,
   getDocs,
   deleteDoc,
 } from "firebase/firestore";
 
 const Form = () => {
+
   const formCollectionRef = collection(db, "technology");
 
   
@@ -18,29 +18,22 @@ const Form = () => {
   const [source, setSource] = useState("");
   const [formList, setFormLists] = useState([]);
 
-
-  
-  
-
+// delete form data from firebase 
   const deleteForm = async (id) => {
-    const postDoc = doc(db, "technology", id);
-    await deleteDoc(postDoc);
+    const formDoc = doc(db, "technology", id);
+    await deleteDoc(formDoc);
   };
 
+// getting form data from firebase
   useEffect(() => {
-    const getPosts = async () => {
+    const getForms = async () => {
       const data = await getDocs(formCollectionRef);
       setFormLists(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
-    getPosts();
+    getForms();
   }, [deleteForm]);
-
-  const [newName, setNewName] = useState(formList.name);
-  const handleChange = (e) => {
-    formList.name = "";
-    setNewName(e.target.value);
-  }
+ 
   return (
     <div>
       {formList.map((form) => {
@@ -77,7 +70,7 @@ const Form = () => {
                   label="Name"
                   variant="outlined"
                   value={form.name}
-                  onChange={handleChange}
+                  
                 />
               </Grid>
               <Grid item md={8} xs={12}>
@@ -89,21 +82,18 @@ const Form = () => {
                   label="Descriptions"
                   variant="outlined"
                   value={form.description}
-                  onChange={(event) => setDescription(event.target.value)}
                 />
               </Grid>
             </Grid>
             
-
-            
-            <Grid container justifyContent="flex-end" spacing={1}>
-              {/* <Grid item md={3}>
+            {/* <Grid container justifyContent="flex-end" spacing={1}>
+              <Grid item md={3}>
                 <Button fullWidth variant="contained" startIcon={<Save />}>
                   Save
                 </Button>
-              </Grid> */}
+              </Grid>
               
-            </Grid>
+            </Grid> */}
           </Paper>
         );
       })}
