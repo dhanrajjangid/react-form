@@ -2,22 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import technologyReducer from "./features/technology";
+// import { configureStore } from "@reduxjs/toolkit";
+// import { Provider } from "react-redux";
+// import technologyReducer from "./features/technology";
 
-const store = configureStore({
-  reducer: {
-    technology: technologyReducer,
-  },
-});
+// const store = configureStore({
+//   reducer: {
+//     technology: technologyReducer,
+//   },
+// });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
       <App />
-    </Provider>{" "}
   </React.StrictMode>
 );
 

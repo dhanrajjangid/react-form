@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { submit } from "../features/technology";
 import { TextField, Button, Paper, Grid, Typography } from "@mui/material";
 import { AttachFile } from "@mui/icons-material";
 
 const Form = () => {
-  const dispatch = useDispatch();
 
   // states
 
@@ -72,9 +69,7 @@ const Form = () => {
     }
   };
 
-  // getting value of sources from localstorage
-  const allSources = JSON.parse(localStorage.getItem("form") || "[]");
-  console.log (allSources)
+ 
 
 
   // Form UI
