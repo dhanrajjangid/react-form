@@ -1,5 +1,4 @@
 import './App.css';
-import AddMoreCopy from './components/AddMoreCopy';
 import Form from './components/Form';
 
 
