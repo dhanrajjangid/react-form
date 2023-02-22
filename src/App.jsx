@@ -1,11 +1,13 @@
 import './App.css';
-import CenteredTabs from './components/VerticalTabs';
+import AddMoreCopy from './components/AddMoreCopy';
+import Form from './components/Form';
 
 
 function App() {
   return (
     <div className="App">
-      <CenteredTabs />
+      {/* <AddMoreCopy /> */}
+      <Form />
     </div>
   );
 }
