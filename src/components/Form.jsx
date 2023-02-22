@@ -11,7 +11,8 @@ const Form = () => {
 
   const [inputList, setInputList] = useState([{ name: "", description: "" }]);
   const [sourceList, setSourceList] = useState([{ source: "" }]);
- 
+  const [counter, setCounter] = useState(0);
+
   const [source, setSource] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -34,11 +35,9 @@ const Form = () => {
     // localStorage.removeItem('form')
   };
 
-  const handleAddSource = (index) => {
-      var counter = 0
-      if(counter < 4){
-        counter = counter + 1;
-        setSourceList([...sourceList, [{ source: "" }]])
+  const handleAddSource = (e, index) => {
+    if(sourceList.length < 5){
+        setSourceList([...sourceList, [{source: ''}]])
       }else{
         alert("you can add maximum 5 sources");
     }
