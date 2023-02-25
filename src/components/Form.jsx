@@ -40,14 +40,12 @@ const Form = () => {
   };
 
   const handleAddSource = (e, listIndex, name, desc) => {
-    if (count < 4){
     const newInputList = [...inputList];
+    if (newInputList[listIndex].sources.length < 5){
     newInputList[listIndex].sources.push({ source: "" });
     setInputList(newInputList);
-    setCount(count +1)
     }else{
       alert("you can add maximum of 5 sources")
-      setCount(0)
     }
   };
 
