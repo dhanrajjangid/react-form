@@ -12,14 +12,7 @@ const Form = () => {
   const [source, setSource] = useState("");
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
-  const [count, setCount] = useState(0);
   
-     useEffect(() => {
-    var courses = JSON.parse(localStorage.getItem('form') || 
-    '[{ name: "", description: "", sources: [{ source: "" }] }]' )
-  console.log(courses)
-  setInputList(courses)
-  },[])
 
   const handleInputChange = (e, i) => {
     let newForm = [...inputList];
@@ -63,19 +56,6 @@ const Form = () => {
     setImage(event.target.files[0]);
   };
 
-  // // adding sources to locastorage
-  // const addSource = () => {
-  //   var sources = JSON.parse(localStorage.getItem("sources") || "[]");
-  //   if (sources.length < 5) {
-  //     sources.push(source);
-
-  //     localStorage.setItem("sources", JSON.stringify(sources));
-  //     setSource("");
-  //   } else {
-  //     alert("You can add maximum 5 sources");
-  //   }
-  // };
-
   const updateSource = (listIndex, event, j) => {
     const newInputList = [...inputList];
     newInputList[listIndex].sources[j].source = event;
@@ -92,10 +72,21 @@ const Form = () => {
     console.log(inputList);
   };
   
-    
-   
 
-    console.log(inputList)
+   useEffect(() => {
+    var formData = JSON.parse(localStorage.getItem("form"));
+    if (formData === null) {
+      setInputList([
+        {
+          name: "",
+          description: "",
+          sources: [{ source: "" }],
+        },
+      ]);
+    } else {
+      setInputList(formData);
+    }
+  }, []);
     
 
 
