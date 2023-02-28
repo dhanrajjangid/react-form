@@ -117,7 +117,7 @@ const Form = () => {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  {inputList.length !== 1 && (
+                  {inputList?.length !== 1 && (
                     <Button
                       sx={{ marginRight: 1 }}
                       variant="contained"
@@ -186,7 +186,7 @@ const Form = () => {
                 justifyContent="space-between"
               >
                 <Grid item md={10} sm={12} xs={12} key={i}>
-                  {inputList[i].sources.map((e, j) => {
+                  {inputList[i]?.sources.map((e, j) => {
                     return (
                       <>
                         <TextField
