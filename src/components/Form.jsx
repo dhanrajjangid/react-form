@@ -147,7 +147,7 @@ const Form = () => {
                   id="outlined-size-small"
                   label="Name"
                   variant="outlined"
-                  value={item.name}
+                  value={item.name || ""}
                   onChange={(e) => handleInputChange(e, i)}
                 />
               </Grid>
