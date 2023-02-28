@@ -15,7 +15,7 @@ const Form = () => {
   const [count, setCount] = useState(0);
   
      useEffect(() => {
-      var courses = JSON.parse(localStorage.getItem('form'))
+      var courses = JSON.parse(localStorage.getItem('form') || [])
     console.log(courses)
     setInputList(courses)
     },[])
