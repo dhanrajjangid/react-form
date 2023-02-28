@@ -13,6 +13,12 @@ const Form = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
   const [count, setCount] = useState(0);
+  
+     useEffect(() => {
+      var courses = JSON.parse(localStorage.getItem('form'))
+    console.log(courses)
+    setInputList(courses)
+    },[])
 
   const handleInputChange = (e, i) => {
     let newForm = [...inputList];
@@ -86,13 +92,9 @@ const Form = () => {
   };
   
     
-      var courses = JSON.parse(localStorage.getItem('form'))
-//     console.log(courses)
-
-    setInputList(courses)
    
-  
-  console.log(inputList)
+
+    console.log(inputList)
     
 
 
