@@ -87,10 +87,12 @@ const Form = () => {
   
     useEffect(() => {
       var courses = JSON.parse(localStorage.getItem('form'))
-    console.log(courses)
+//     console.log(courses)
 
     setInputList(courses)
     },[])
+  
+  console.log(inputList)
     
 
 
