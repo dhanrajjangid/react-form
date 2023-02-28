@@ -15,12 +15,11 @@ const Form = () => {
   const [count, setCount] = useState(0);
   
      useEffect(() => {
-      var courses = JSON.parse(localStorage.getItem('form') || '[
-    { name: "", description: "", sources: [{ source: "" }] },
-  ]')
-    console.log(courses)
-    setInputList(courses)
-    },[])
+    var courses = JSON.parse(localStorage.getItem('form') || 
+    '[{ name: "", description: "", sources: [{ source: "" }] }]' )
+  console.log(courses)
+  setInputList(courses)
+  },[])
 
   const handleInputChange = (e, i) => {
     let newForm = [...inputList];
